@@ -159,49 +159,4 @@
   </body>
 </html>
 
-<!-- manifest.json -->
-<!-- Save as manifest.json in same directory -->
-<script type="application/json" id="manifest-json">
-  {
-    "name": "My Steering Log",
-    "short_name": "SteeringLog",
-    "description": "センターズレを整える、選択式セルフログアプリ",
-    "start_url": "./index.html",
-    "display": "standalone",
-    "background_color": "#1a1f24",
-    "theme_color": "#1a1f24",
-    "icons": [
-      {
-        "src": "icon-192.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      },
-      {
-        "src": "icon-512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ]
-  }
-</script>
 
-<!-- service-worker.js -->
-<!-- Save as service-worker.js -->
-<script id="service-worker-js">
-  const CACHE_NAME = "steering-log-cache-v1";
-  const FILES_TO_CACHE = ["./index.html", "./manifest.json"];
-
-  self.addEventListener("install", (event) => {
-    event.waitUntil(
-      caches.open(CACHE_NAME).then((cache) => cache.addAll(FILES_TO_CACHE))
-    );
-  });
-
-  self.addEventListener("fetch", (event) => {
-    event.respondWith(
-      caches
-        .match(event.request)
-        .then((response) => response || fetch(event.request))
-    );
-  });
-</script>
