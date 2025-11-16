@@ -1,12 +1,13 @@
 const CACHE_NAME = "my-steering-log-cache-v1";
 const FILES_TO_CACHE = [
-  "/",
-  "/index.html",
-  "/manifest.json",
-  "/app.js",
-  "/icon-192.png",
-  "/icon-512.png"
+  "./",
+  "./index.html",
+  "./manifest.json",
+  "./app.js",
+  "./icon-192.png",
+  "./icon-512.png"
 ];
+
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
